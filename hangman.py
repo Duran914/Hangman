@@ -1,36 +1,59 @@
 import random
-import re
-import sys
-wordsArray = ["mac", "windows", "mouse", "keyboard", "desktop", "trackpad"]
+import draw
 
-word = (random.choice(wordsArray))
+gameWords = ["mac", "windows", "mouse", "keyboard", "desktop", "trackpad", "wifi", "internet"]
 
-lives = 5
+word = random.choice(gameWords) # Selects random word from array
 
-loss = 0
-guesses = ''
-wordArr = list(word)
+gameWordList = [] # turn gameWord into list 
 
-print ('Lets play Hangman!\nHint: Computer terms')
-print word
-print ("Lives: %d" %(lives))
-
-for char in word:
-    print ("-"),
-
-while lives != 0:
-    guess = (raw_input('\nChoose a letter: '))
-    guesses += guess
-    for char in word:
-        if char in guesses:
-            print char,
+# function to display word hits during game
+def displayHits():
+    for char in gameWordList:
+        if char in guessArray:
+            print (char, end='')
         else:
-            print ('-'),
-        if guess not in word:
+            print ('-', end='')
+
+#  Opening Message
+print(f'Let\'s Play Hangman!\nThis word has {len(word)} letters')
+
+# add letters in word in gameWordList
+for letter in word:
+    gameWordList.append(letter) # break up word in list
+    print("-", end="")
+
+lives = 6 # game lives
+
+guessArray = [] # correct letters guessed list
+
+# List of invalid input 
+invalid = ['!',',', '@', '#', '$', '%', '^', '&', '*',
+'(', ')', ';',':', '?', '+', '=', '`', '~', '|', '\/', '\"']
+
+while lives > 0:   
+    userGuess = input("\nEnter letter:")
+    if userGuess.isalpha() and userGuess not in invalid:  # Check for numbers/special characters
+        if userGuess in gameWordList:
+            guessArray += userGuess
+            print("Correct")
+        else:
+            print("Wrong")
             lives -= 1
-            print ('Wrong, You have %d lives left' %(lives))
-            break
-    if guesses == word:
-        print ('\nYou Win!')
-        sys.exit()
-print ('Sorry you lost!, The word was %s' %(word))
+            print(f"You Have {lives} lives left!")
+    else:
+        print('No Numbers or Special Characters!') 
+    
+    draw.drawBody(lives)  # draws stick figure from draw.py 
+    
+    displayHits()
+
+    winGame = [char if char in guessArray else "-" for char in gameWordList] # guesses 
+    
+    if winGame == gameWordList:
+        break # break out of while loop if user Wins
+
+if lives > 0:
+    print(f"\nYou Win! the word was {word}")
+else:
+    print (f'\nYou Lose, the word was {word}')

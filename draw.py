@@ -1,0 +1,68 @@
+def drawBody(lives):
+    if lives == 5:
+        print("        -----       ")
+        print("        |\' \'|     ")  
+        print("        | o |       ")
+        print("        -----       ")
+        print("You've lost your head!")
+
+    elif lives == 4:
+        print("        -----       ")
+        print("        |\' \'|     ")  
+        print("        | o |       ")
+        print("        -----       ")
+        print("          |         ")
+        print("          |         ")
+        print("          |         ")
+        print("          |         ")
+        print("You've lost your body!")
+    
+    elif lives == 3:
+        print("        -----       ")
+        print("        |\' \'|     ")  
+        print("        | o |       ")
+        print("        -----       ")
+        print("          |         ")
+        print("         /|         ")
+        print("        / |         ")
+        print("       /  |         ")
+        print("You've lost you right arm!")
+    
+    elif lives == 2:
+        print("        -----       ")
+        print("        |\' \'|     ")  
+        print("        | o |       ")
+        print("        -----       ")
+        print("          |         ")
+        print("         /|\        ")
+        print("        / | \       ")
+        print("       /  |  \      ")
+        print("You've lost you left arm!")
+    
+    elif lives == 1:
+        print("        -----       ")
+        print("        |\' \'|     ")  
+        print("        | o |       ")
+        print("        -----       ")
+        print("          |         ")
+        print("         /|\        ")
+        print("        / | \       ")
+        print("       /  |  \      ")
+        print("         /          ")
+        print("        /           ")
+        print("       /            ")
+        print("You've lost right leg!")
+    
+    elif lives == 0:
+        print("        -----       ")
+        print("        |\' \'|     ")  
+        print("        | o |       ")
+        print("        -----       ")
+        print("          |         ")
+        print("         /|\        ")
+        print("        / | \       ")
+        print("       /  |  \     ")
+        print("         / \        ")
+        print("        /   \       ")
+        print("       /     \      ")
+        print("You've been hanged!")
